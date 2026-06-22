@@ -95,13 +95,10 @@ function submitForm() {
   if (!phone || !/^[0-9]{10}$/.test(phone.replace(/\s/g, ''))) { alert('Please enter a valid 10-digit mobile number.'); return; }
   if (!document.getElementById('fdate').value) { alert('Please select a preferred visit date.'); return; }
 
-  const text = `🏡 New Enquiry — VIP City Park Town\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n📧 Email: ${email}\n📅 Visit Date: ${date}\n📣 Source: ${source}\n💬 Message: ${message}`;
+const text = `🏡 New Enquiry — Divine Homes \n\n👤 Name: ${name}\n📞 Phone: ${phone}\n📧 Email: ${email}\n📅 Visit Date: ${date}\n📣 Source: ${source}\n💬 Message: ${message}`;
 
-  fetch(`https://api.telegram.org/bot8938734949:AAFasnutltncGBRB7r33nFFcWWDpCrWcNFc/sendMessage`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ chat_id: '5060437123', text: text })
-  }).then(r => r.json()).then(d => console.log(d)).catch(e => console.log(e));
+const waMessage = encodeURIComponent(text);
+window.open(`https://wa.me/919384947996?text=${waMessage}`, '_blank');
 
   document.getElementById('contactForm').style.display = 'none';
   document.getElementById('formSuccess').style.display = 'block';
